@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OffTrail</string>
+    <string name="msg_splash">Carregando ...</string>
+    <string name="tx_sair">Sair</string>
+    <string name="tx_entrar">Entrar</string>
+    <string name="tx_senha">Senha</string>
+    <string name="tx_login">Login</string>
+    <string name="tx_nome">Nome</string>
+    <string name="tx_idade">Idade</string>
+    <string name="tx_cancelar">Cancelar</string>
+    <string name="tx_salvar">Salvar</string>
+</resources>

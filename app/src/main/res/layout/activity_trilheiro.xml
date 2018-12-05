@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.TrilheiroActivity">
+
+    <ImageView
+        android:id="@+id/imvFoto"
+        android:layout_width="193dp"
+        android:layout_height="171dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="100dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/colorPrimaryDark" />
+
+    <EditText
+        android:id="@+id/edtTrilheiroNome"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="72dp"
+        android:ems="10"
+        android:hint="@string/tx_nome"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.647"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imvFoto" />
+
+    <EditText
+        android:id="@+id/edtTrilheiroIdade"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="42dp"
+        android:ems="10"
+        android:hint="@string/tx_idade"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtTrilheiroNome" />
+
+    <Spinner
+        android:id="@+id/spTrilheiroMoto"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="42dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtTrilheiroIdade" />
+
+    <Spinner
+        android:id="@+id/spTrilheiroGrupo"
+        android:layout_width="300dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="42dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spTrilheiroMoto" />
+
+    <Button
+        android:id="@+id/btTrilheiroSalvar"
+        android:layout_width="140dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="salvar"
+        android:text="@string/tx_salvar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spTrilheiroGrupo" />
+
+    <Button
+        android:id="@+id/btTrilheiroCancelar"
+        android:layout_width="140dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="cancelar"
+        android:text="@string/tx_cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btTrilheiroSalvar"
+        app:layout_constraintTop_toBottomOf="@+id/spTrilheiroGrupo" />
+
+</android.support.constraint.ConstraintLayout>
