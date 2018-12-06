@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity
 
     public  void refreshListTrilheiros(){
 
+        trilheiroAdapter.refreshList();
         lstTrilheiros.setAdapter(trilheiroAdapter);
 
     }
@@ -196,16 +197,20 @@ public class MainActivity extends AppCompatActivity
 
             for (Endereco endereco : enderecos) {
 
-                cidade.setNome(endereco.getLocalidade());
+                if (!db.isCidadeCadastrada(endereco.getLocalidade())) {
 
-                try {
-                    db.getCidadeDao().create(cidade);
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                    cidade.setNome(endereco.getLocalidade());
+
+                    try {
+                        db.getCidadeDao().create(cidade);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 }
 
             }
         }
+
         mostrarResultado("Foram sincronizadas " + enderecos.size() + " cidades");
     }
 }

@@ -29,7 +29,6 @@ public class TrilheiroAdapter
     @RootContext
     Context context;
 
-    @AfterInject
     void initAdapter() {
         try {
             trilheiros = dh.getTrilheiroDao().queryForAll();
@@ -66,5 +65,9 @@ public class TrilheiroAdapter
         trilheiroItemView.bind(getItem(position));
 
         return trilheiroItemView;
+    }
+
+    public void refreshList(){
+        this.initAdapter();
     }
 }

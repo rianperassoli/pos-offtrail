@@ -260,4 +260,18 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             return  null;
         }
     }
+
+    public Boolean isCidadeCadastrada(String nomeCidade){
+        try {
+
+            List<Cidade>  cidades = getCidadeDao().queryBuilder().where().eq("nome", nomeCidade).query();
+
+            return cidades.size() > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            return false;
+        }
+    }
 }
