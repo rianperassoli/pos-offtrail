@@ -2,10 +2,7 @@ package br.com.rianperassoli.webmob.offtrail.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -75,8 +72,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                Intent telaTrilheiro = new Intent(MainActivity.this, TrilheiroActivity_.class);
-                startActivity(telaTrilheiro);
+                startActivity(new Intent(MainActivity.this, TrilheiroActivity_.class));
 
             }
         });
@@ -146,7 +142,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            startActivity(new Intent(this, AboutActivity_.class));
         }
 
         return super.onOptionsItemSelected(item);

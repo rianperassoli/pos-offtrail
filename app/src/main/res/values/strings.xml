@@ -16,4 +16,9 @@
     <string name="tx_idade">Idade</string>
     <string name="tx_cancelar">Cancelar</string>
     <string name="tx_salvar">Salvar</string>
+    <string name="msg_about">About</string>
+    <string name="tx_backtomainscreen">Back to the main screen</string>
+    <string name="text_about">Offtrail é um aplicativo para gerenciar, trilheiros e seus grupos de trilha de uma forma fácil e rápida facilitando a identificação de cada um.</string>
+    <string name="tx_versao">Versão:</string>
+    <string name="vl_versao">1.0</string>
 </resources>
