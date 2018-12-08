@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.VectorDrawable;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -141,9 +143,15 @@ public class TrilheiroActivity extends AppCompatActivity {
 
     @NonNull
     private byte[] getFotoTrilheiroTela() {
+
+        if (imvFoto.getDrawable() instanceof VectorDrawable) {
+            return null;
+        }
+
         Bitmap bitmap = ((BitmapDrawable) imvFoto.getDrawable()).getBitmap();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+
         return baos.toByteArray();
     }
 

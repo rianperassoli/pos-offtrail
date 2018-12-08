@@ -86,7 +86,10 @@ public class TrilheiroItemView extends LinearLayout {
 
         txtNome.setText(t.getNome());
         txtMoto.setText(t.getMoto().getModelo() + " - " + t.getMoto().getCin());
-        imvFoto.setImageBitmap(BitmapFactory.decodeByteArray(t.getFoto(), 0, t.getFoto().length));
+
+        if (t.getFoto() != null) {
+            imvFoto.setImageBitmap(BitmapFactory.decodeByteArray(t.getFoto(), 0, t.getFoto().length));
+        }
     }
 
 }
