@@ -33,10 +33,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public void entrar(View v){
 
-        String login = "rian";//edtLogin.getText().toString();
-        String senha = "rian";//edtPassword.getText().toString();
+        String login = edtLogin.getText().toString();
+        String senha = edtPassword.getText().toString();
 
-        //if (!login.trim().isEmpty() && !senha.trim().isEmpty()){
+        if (!login.trim().isEmpty() && !senha.trim().isEmpty()){
 
             Usuario usuario = db.validaLogin(login, senha);
 
@@ -52,9 +52,9 @@ public class LoginActivity extends AppCompatActivity {
                 mostrarMensagemErroNoLogin("Login Inválido");
             }
 
-        //} else {
-        //    mostrarMensagemErroNoLogin("Informe o usuário e senha");
-        //}
+        } else {
+            mostrarMensagemErroNoLogin("Informe o usuário e senha");
+        }
 
     }
 

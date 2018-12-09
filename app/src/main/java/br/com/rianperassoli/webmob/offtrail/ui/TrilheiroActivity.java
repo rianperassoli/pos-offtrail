@@ -61,7 +61,6 @@ public class TrilheiroActivity extends AppCompatActivity {
 
     @AfterViews
     public void inicializar(){
-
         this.trilheiro = (Trilheiro) this.getIntent().getSerializableExtra("trilheiro");
 
         try {
@@ -96,9 +95,6 @@ public class TrilheiroActivity extends AppCompatActivity {
                 }
             }
 
-
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -110,14 +106,14 @@ public class TrilheiroActivity extends AppCompatActivity {
         String nome = "";
         int idade = 0;
 
-        if (edtNome.getText().toString().trim() != null) {
-            nome = edtNome.getText().toString();
-        } else {
+        if (edtNome.getText().toString().trim().equals("")) {
             Toast.makeText(this, "Informe um nome válido", Toast.LENGTH_LONG).show();
             edtNome.requestFocus();
-        }
-
-        if (edtIdade.getText().toString().trim() != null) {
+        }else if (edtIdade.getText().toString().trim().equals("")) {
+            Toast.makeText(this, "Informe uma idade válida", Toast.LENGTH_LONG).show();
+            edtIdade.requestFocus();
+        } else {
+            nome = edtNome.getText().toString();
             try {
                 idade = Integer.parseInt(edtIdade.getText().toString().trim());
             } catch (NumberFormatException e) {

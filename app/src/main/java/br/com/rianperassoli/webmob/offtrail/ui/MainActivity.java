@@ -19,6 +19,7 @@ import android.widget.Toast;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Fullscreen;
 import org.androidannotations.annotations.UiThread;
@@ -109,7 +110,8 @@ public class MainActivity extends AppCompatActivity
         refreshListTrilheiros();
     }
 
-    public  void refreshListTrilheiros(){
+    @Click(R.id.imvExcluir)
+    public void refreshListTrilheiros(){
 
         trilheiroAdapter.refreshList();
         lstTrilheiros.setAdapter(trilheiroAdapter);
@@ -213,4 +215,5 @@ public class MainActivity extends AppCompatActivity
 
         mostrarResultado("Foram sincronizadas " + enderecos.size() + " cidades");
     }
+
 }

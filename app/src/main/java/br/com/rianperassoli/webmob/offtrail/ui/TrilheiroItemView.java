@@ -41,7 +41,6 @@ public class TrilheiroItemView extends LinearLayout {
     @Bean
     DatabaseHelper db;
 
-
     public TrilheiroItemView(Context context) {
         super(context);
     }
