@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -90,7 +91,9 @@ public class TrilheiroActivity extends AppCompatActivity {
                     }
                 }
 
-                imvFoto.setImageBitmap(BitmapFactory.decodeByteArray(trilheiro.getFoto(), 0, trilheiro.getFoto().length));
+                if (trilheiro.getFoto() != null) {
+                    imvFoto.setImageBitmap(BitmapFactory.decodeByteArray(trilheiro.getFoto(), 0, trilheiro.getFoto().length));
+                }
             }
 
 
@@ -104,41 +107,63 @@ public class TrilheiroActivity extends AppCompatActivity {
 
     public void salvar(View v){
 
-        if (trilheiro == null) {
-            trilheiro = new Trilheiro();
+        String nome = "";
+        int idade = 0;
+
+        if (edtNome.getText().toString().trim() != null) {
+            nome = edtNome.getText().toString();
+        } else {
+            Toast.makeText(this, "Informe um nome válido", Toast.LENGTH_LONG).show();
+            edtNome.requestFocus();
         }
 
-        trilheiro.setNome(edtNome.getText().toString());
-        trilheiro.setIda(Integer.parseInt(edtIdade.getText().toString()));
-        trilheiro.setMoto((Moto)spMotos.getSelectedItem());
-        trilheiro.setFoto(getFotoTrilheiroTela());
-
-        try {
-            if (trilheiro.getCodigo() == null) {
-                db.getTrilheiroDao().create(trilheiro);
-            } else {
-                db.getTrilheiroDao().update(trilheiro);
+        if (edtIdade.getText().toString().trim() != null) {
+            try {
+                idade = Integer.parseInt(edtIdade.getText().toString().trim());
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Informe uma idade válida", Toast.LENGTH_LONG).show();
+                edtIdade.requestFocus();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
 
+        if ((!nome.isEmpty()) && idade > 0) {
 
-        db.deleteGrupoDoTrilheiro(trilheiro.getCodigo());
+            if (trilheiro == null) {
+                trilheiro = new Trilheiro();
+            }
 
-        GrupoTrilheiro grupoTrilheiro = new GrupoTrilheiro();
+            trilheiro.setNome(edtNome.getText().toString());
+            trilheiro.setIda(idade);
+            trilheiro.setMoto((Moto) spMotos.getSelectedItem());
+            trilheiro.setFoto(getFotoTrilheiroTela());
 
-        grupoTrilheiro.setTrilheiro(trilheiro);
-        grupoTrilheiro.setGrupo((Grupo) spGrupos.getSelectedItem());
-        grupoTrilheiro.setDataCadastro(new Date());
+            try {
+                if (trilheiro.getCodigo() == null) {
+                    db.getTrilheiroDao().create(trilheiro);
+                } else {
+                    db.getTrilheiroDao().update(trilheiro);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-        try {
-            db.getGrupoTrilheiroDao().create(grupoTrilheiro);
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+            db.deleteGrupoDoTrilheiro(trilheiro.getCodigo());
+
+            GrupoTrilheiro grupoTrilheiro = new GrupoTrilheiro();
+
+            grupoTrilheiro.setTrilheiro(trilheiro);
+            grupoTrilheiro.setGrupo((Grupo) spGrupos.getSelectedItem());
+            grupoTrilheiro.setDataCadastro(new Date());
+
+            try {
+                db.getGrupoTrilheiroDao().create(grupoTrilheiro);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            finish();
         }
-
-        finish();
     }
 
     @NonNull

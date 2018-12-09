@@ -53,13 +53,13 @@ public class MainActivity extends AppCompatActivity
     @Bean
     DatabaseHelper db;
 
-    @Pref
-    Configuracao_ configuracao;
-
     @RestService
     CidadeClient cidadeClient;
 
     ProgressDialog pd;
+
+    @Pref
+    Configuracao_ configuracao;
 
 
     @AfterViews
@@ -89,17 +89,17 @@ public class MainActivity extends AppCompatActivity
         //pega o dado passado pelo putExtra na tela de login
         Usuario usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
+        configuracao.getSharedPreferences();
+
+        String msg = configuracao.mensagemBoasVindas().get();
+
         if (usuario != null) {
-            Toast.makeText(this, "Seja bem-vindo " + usuario.getEmail(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, msg + usuario.getEmail(), Toast.LENGTH_SHORT).show();
         }
 
         View v = toolbar.getRootView();
         v.setBackgroundColor(configuracao.cor().get());
 
-        Toast.makeText(this, configuracao.parametro().get(), Toast.LENGTH_SHORT).show();
-
-        //editar as configuracoes
-        //configuracao.edit().cor().put(Color.BLUE).apply();
     }
 
     @Override
@@ -155,9 +155,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_sincronizar) {
-            SincronizaCidades();
+            sincronizaCidades();
         } else if (id == R.id.nav_preferencias) {
-            //legal
+            abrirTelaPreferencias();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -165,7 +165,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void SincronizaCidades() {
+    private void abrirTelaPreferencias() {
+        startActivity(new Intent(this, PreferenciasActivity_.class));
+    }
+
+    private void sincronizaCidades() {
 
         pd = new ProgressDialog(this);
         pd.setCancelable(false);

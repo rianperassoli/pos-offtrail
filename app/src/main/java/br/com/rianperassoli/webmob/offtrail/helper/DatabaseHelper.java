@@ -72,6 +72,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
             getUsuarioDao().create(u);
 
+            u.setEmail("roberson");
+            u.setSenha("roberson");
+
+            getUsuarioDao().create(u);
+
             //insert cidade
             Cidade cidade = new Cidade();
             cidade.setNome("São Miguel do Oeste");

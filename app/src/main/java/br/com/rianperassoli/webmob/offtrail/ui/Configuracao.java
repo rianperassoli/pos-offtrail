@@ -9,10 +9,12 @@ import org.androidannotations.annotations.sharedpreferences.SharedPref;
 @SharedPref
 public interface Configuracao {
 
-    // The field name will have default value "John"
     @DefaultInt(Color.LTGRAY)
     int cor();
 
     @DefaultString("valor padrão")
     String parametro();
+
+    @DefaultString("Seja bem-vindo(a) ")
+    String mensagemBoasVindas();
 }
